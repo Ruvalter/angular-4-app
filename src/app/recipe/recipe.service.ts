@@ -1,16 +1,32 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import "rxjs/add/operator/toPromise";
 
+@Injectable()
 
 export class RecipeService {
+
+  private recipesUrl = "http://localhost:3000/recipes";
+
+  constructor(private http: Http) {};
+
+
   recipeSelected = new EventEmitter<Recipe>();
 
-  private recipes: Recipe[] = [
-    new Recipe('A test recipe', 'This is simply a test', 'http://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
-    new Recipe('Another recipe', 'This is simply a test', 'http://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg')
-  ];
 
-  getRecipes() {
-    return this.recipes.slice();
+
+
+  getRecipes(): Promise<Recipe[]>  {
+    return this.http.get(this.recipesUrl)
+             .toPromise()
+             .then(response => response.json().recipes as Recipe[])
+             .catch(this.handleError)
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error("An error has ocurred!", error)
+    return Promise.reject(error.message || error)
+
   }
 }

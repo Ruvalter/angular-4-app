@@ -1,23 +1,36 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import "rxjs/add/operator/toPromise";
 
+@Injectable()
 
 export class ShoppingListService {
 
   ingredientsChanged = new EventEmitter<Ingredient[]>();
+  private ingredientsUrl = "http://localhost:3000/ingredients";
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('tomatoes', 10)
-  ];
+  constructor(private http: Http) {};
 
-  getIngredients() {
-    return this.ingredients.slice();
+
+  getIngredients(): Promise<Ingredient[]>  {
+    return this.http.get(this.ingredientsUrl)
+             .toPromise()
+             .then(response => response.json().ingredients as Ingredient[])
+             .catch(this.handleError)
   }
 
-  newIngredientAdded(ingredients: Ingredient) {
-    this.ingredients.push(ingredients);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+  private handleError(error: any): Promise<any> {
+    console.error("An error has ocurred!", error)
+    return Promise.reject(error.message || error)
+
   }
+
+
+
+  // newIngredientAdded(ingredients: Ingredient) {
+  //   this.ingredients.push(ingredients);
+  //   this.ingredientsChanged.emit(this.ingredients.slice());
+  // }
 
 }
