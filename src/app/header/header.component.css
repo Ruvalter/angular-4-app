@@ -9,3 +9,22 @@ p {
   border-width: 2px;
   border-radius: 5px;
 }
+
+.pageLink  {
+  padding-bottom: 10px;
+}
+
+.pageLink:focus  {
+  border-bottom: 5px solid #17aa1c;
+
+}
+
+.pageLink:hover {
+  border-bottom: 5px solid #17aa1c;
+
+  transition: all 0.2s;
+
+}
+
+
+
