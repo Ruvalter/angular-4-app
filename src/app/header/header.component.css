@@ -3,6 +3,10 @@ p {
   line-height: 10px;
   font-weight: 200;
 }
+
+.main_title {
+  margin: -24px 4px 10px;
+}
 .detail {
   border-style: solid;
   border-color: red;
