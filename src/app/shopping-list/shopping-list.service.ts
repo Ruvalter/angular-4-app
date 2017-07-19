@@ -26,10 +26,10 @@ export class ShoppingListService {
 
   }
 
-  newIngredientAdded(ingredient: Ingredient): Promise<Ingredient> {
+  newIngredientAdded(ingredient: Ingredient): Promise<void> {
     return this.http.post(this.ingredientsUrl, ingredient)
               .toPromise()
-              .then(response => response.json().ingredient as Ingredient)
+              .then(() => this.ingredientsChanged.emit())
               .catch(this.handleError)
   }
 
