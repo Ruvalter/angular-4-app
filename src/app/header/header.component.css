@@ -7,6 +7,11 @@ p {
 .main_title {
   margin: -24px 4px 10px;
 }
+
+.teste {
+  padding: 8px 15px;
+}
+
 .detail {
   border-style: solid;
   border-color: red;
