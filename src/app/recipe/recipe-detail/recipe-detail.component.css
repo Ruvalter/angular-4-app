@@ -10,3 +10,7 @@ p {
   line-height: 10px;
   font-weight: 200;
 }
+
+.list-group {
+      padding-right: 0%;
+}
