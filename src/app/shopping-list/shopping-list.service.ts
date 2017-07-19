@@ -26,11 +26,11 @@ export class ShoppingListService {
 
   }
 
-
-
-  // newIngredientAdded(ingredients: Ingredient) {
-  //   this.ingredients.push(ingredients);
-  //   this.ingredientsChanged.emit(this.ingredients.slice());
-  // }
+  newIngredientAdded(ingredient: Ingredient): Promise<Ingredient> {
+    return this.http.post(this.ingredientsUrl, ingredient)
+              .toPromise()
+              .then(response => response.json().ingredient as Ingredient)
+              .catch(this.handleError)
+  }
 
 }

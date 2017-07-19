@@ -30,4 +30,10 @@ export class ShoppingListComponent implements OnInit {
 
   }
 
+  getNewArray(){
+    this.shoppingListService.getIngredients()
+      .then(_ingredients => this.ingredients = _ingredients);
+  }
+
+
 }
