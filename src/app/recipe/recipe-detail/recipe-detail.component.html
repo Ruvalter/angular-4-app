@@ -14,14 +14,28 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div appDropdown class="btn-group">
+    <button
+        (click)="onAddToShoppingList()"
+        type="button"
+        class="btn btn-primary">
+        Add test
+      </button>
+      <button
+        (click)="onClick()"
+        type="button"
+        class="btn btn-primary">
+        Edit test
+      </button>
+    <div
+      appDropdown
+      class="btn-group">
       <button
         type="button"
         class="btn btn-primary dropdown-toggle">
         Manage Recipe <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">To shopping list</a></li>
+        <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
         <li><a href="#">Edit Recipe</a></li>
         <li><a href="#">Delete Recipe</a></li>
       </ul>
