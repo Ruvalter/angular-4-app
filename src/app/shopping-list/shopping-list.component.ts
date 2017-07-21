@@ -12,6 +12,7 @@ import { ShoppingListService } from './shopping-list.service';
 export class ShoppingListComponent implements OnInit {
 
   @Input() newIngredient: Ingredient;
+  @Input() ingredientSent: Ingredient;
   ingredients: Ingredient[];
 
 
@@ -25,9 +26,6 @@ export class ShoppingListComponent implements OnInit {
           this.ingredients = ingredient;
         }
       );
-
-
-
   }
 
 }
