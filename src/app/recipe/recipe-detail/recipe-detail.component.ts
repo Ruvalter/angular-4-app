@@ -20,13 +20,8 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddToShoppingList() {
-    console.log("test");
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
 
-  }
-
-  onClick(){
-    console.log("Edit");
   }
 
 }
