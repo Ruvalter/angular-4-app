@@ -7,24 +7,18 @@ import {
 
 
 @Directive ({
-  selector: '[appDropdown]'
+  selector: '[appOnFocus]'
 })
 
-export class DropdownDirective {
+export class OnFocusDirective {
 
-  @HostBinding('class.open') isOpen = false;
+  @HostBinding('class.selection') isSelected = false;
 
   @HostListener('click') toggleOpen () {
-    this.isOpen = !this.isOpen;
+    this.isSelected = !this.isSelected;
   }
   // @HostListener('focusout') focusOut () {
   //   this.isOpen = false;
   // }
 
 }
-
-
-
-
-
-
