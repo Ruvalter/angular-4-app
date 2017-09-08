@@ -12,7 +12,7 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') slForm: NgForm;
-  subscription: Subscription;
+  private subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
@@ -20,7 +20,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
-    this.slService.startedEditing
+    this.subscription = this.slService.startedEditing
       .subscribe(
         (index: number) => {
           this.editedItemIndex = index;
