@@ -1,7 +1,8 @@
 
 
 .pageLink  {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 5px solid #f8f8f8;
 }
 
 .pageLink:focus {
@@ -14,6 +15,10 @@
 
   transition: all 0.2s;
 
+}
+
+a.active {
+  border-bottom: 5px solid #17aa1c;
 }
 
 .placing {
